@@ -20,7 +20,6 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-		this.registerEvents();
 	},
     // Bind Event Listeners
     //
@@ -35,6 +34,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -42,18 +42,26 @@ var app = {
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
 
+		this.showAlert('Store Initialized', 'Info');
+		window.localStorage.setItem("Username", "Alex");
         //listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
     },
-	
+	showAlert: function (message, title) {
+    if (navigator.notification) {
+        navigator.notification.alert(message, null, title, 'OK');
+    } else {
+        alert(title ? (title + ": " + message) : message);
+    }
+   },
 	// Register events
 	registerEvents: function() {
     var self = this;
     // Check of browser supports touch events...
     if (document.documentElement.hasOwnProperty('ontouchstart')) {
-        // ... if yes: register touch event listener to change the "selected" state of the item
+        // ... if yes: register touch event listener to change the "selected" state of 8he item
         $('body').on('touchstart', 'a', function(event) {
             $(event.target).addClass('tappable-active');
         });

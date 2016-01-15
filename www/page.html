@@ -31,22 +31,22 @@
     </head>
     <body>
         <div class="app">
-            <h1>Wellbeing Portal Mobile App</h1>
-			<p>Username</p>
-			<input type="text" data-native-menu="true" onchange="alert('hi')"/><br>
-			<a href="page.html">Sign Up</a>
-            <div id="deviceready" class="blink" onclick="alert('click')">
+            <h1>HELLO PhoneGap - new page</h1>
+			<a href="index.html">Back</a>
+            <div id="deviceready" class="blink">
+			<input type="text"/>
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
             </div>
-		<p>Hello, world 6</p>
+		<p>Hello, world 8.</p>
 			</div>
 
         <script type="text/javascript" src="cordova.js"></script>
 		<script src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+		<script>
+		//app.initialize();
+		alert(window.localStorage.getItem("Username"))
+		</script>
     </body>
 </html>
