@@ -42,9 +42,14 @@ var app = {
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
 
-		this.showAlert('Store Initialized', 'Info');
-		window.localStorage.setItem("Username", "Alex");
-        //listeningElement.setAttribute('style', 'display:none;');
+		// this.showAlert('Store Initialized', 'Info');
+		//window.localStorage.setItem("Username", "Alex");
+		var usernameElement = document.getElementById("username");
+		//alert(usernameElement);
+        usernameElement.innerHTML = getUserName();
+        //usernameElement.html("hi");
+        //$('username').html(getUserName());
+		listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
@@ -77,8 +82,30 @@ var app = {
             $(event.target).removeClass('tappable-active');
         });
     }
-},
+}
 };
+
+function setUserName(name)
+{
+	window.localStorage.setItem("Username", name);
+}
+
+function getUserName()
+{
+	return window.localStorage.getItem("Username");
+}
+
+
+function updateUserName()
+{
+    var usernameElement = document.getElementById("username_input");
+    username = usernameElement.value;
+    //alert(username);
+    window.localStorage.setItem("Username", username);
+    var usernameElement = document.getElementById("username");
+    //alert(usernameElement);
+    usernameElement.innerHTML = getUserName();
+}
 
 function click()
 {

@@ -32,8 +32,8 @@
     <body>
         <div class="app">
             <h1>Wellbeing Portal Mobile App</h1>
-			<p>Username</p>
-			<input type="text" data-native-menu="true" onchange="alert('hi')"/><br>
+			<p>Hello, <div id="username"></div></p>
+			<input id="username_input" type="text" data-native-menu="true" onchange="updateUserName()"/><br>
 			<a href="page.html">Sign Up</a>
             <div id="deviceready" class="blink" onclick="alert('click')">
                 <p class="event listening">Connecting to Device</p>

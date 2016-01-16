@@ -1,6 +1,6 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.helloworld" version="1.0.0">
-  <name>Wellbeing Intake Form</name>
-  <description>Form for new subjects</description>
+  <name>HelloUser</name>
+  <description>Application that asks for username and prints Hello, {{ username }}</description>
   <author href="http://wellbeing.nd.edu" email="baguage@gmail.com">Alex Vyushkov</author>
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
