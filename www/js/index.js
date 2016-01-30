@@ -106,18 +106,26 @@ function updateUserName() {
 
 function get_profile(token) {
     var xhttp = new XMLHttpRequest();
+    var usernameElement;
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4) {
-            response = JSON.parse(xhttp.responseText);
-            var usernameElement = document.getElementById("username");
-            if (response.status == "success") {
-                usernameElement.innerHTML = "Profile Loaded Successful";
-                window.localStorage.setItem("profile", response.profile);
-                var profileElement = document.getElementById("profile");
-                profileElement.innerHTML = response.profile["First Name"] + " " + response.profile["Last Name"] + " " + response.profile["Gender"];
+            if (xhttp.status == 200) {
+                response = JSON.parse(xhttp.responseText);
+                usernameElement = document.getElementById("username");
+                if (response.status == "success") {
+                    usernameElement.innerHTML = "Profile Loaded Successful";
+                    window.localStorage.setItem("profile", response.profile);
+                    var profileElement = document.getElementById("profile");
+                    profileElement.innerHTML = response.profile["First Name"] + " " + response.profile["Last Name"] + " " + response.profile["Gender"];
 
-            } else {
-                usernameElement.innerHTML = "Profile Load Failed";
+                } else {
+                    usernameElement.innerHTML = "Profile Load Failed";
+                }
+            }
+            else {
+                /* Internal server error or CORS error */
+                usernameElement = document.getElementById("username");
+                usernameElement.innerHTML = "Profile Load Failed (Server Error)";
             }
         }
 
@@ -134,15 +142,23 @@ function login(username, password) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4) {
-            response = JSON.parse(xhttp.responseText);
-            var usernameElement = document.getElementById("username");
-            if (response.status == "success") {
-                usernameElement.innerHTML = "Login Successful";
-                window.localStorage.setItem("Token", response.token);
-                get_profile(response.token);
-            } else {
-                usernameElement.innerHTML = "Login Failed";
-                window.localStorage.removeItem("Token");
+            if (xhttp.status == 200) {
+                response = JSON.parse(xhttp.responseText);
+
+                var usernameElement = document.getElementById("username");
+                if (response.status == "success") {
+                    usernameElement.innerHTML = "Login Successful";
+                    window.localStorage.setItem("Token", response.token);
+                    get_profile(response.token);
+                } else {
+                    usernameElement.innerHTML = "Login Failed";
+                    window.localStorage.removeItem("Token");
+                }
+            }
+            else {
+                /* Internal server error or CORS error */
+                usernameElement = document.getElementById("username");
+                usernameElement.innerHTML = "Login Failed (Server Error)";
             }
         }
 
@@ -153,7 +169,7 @@ function login(username, password) {
 
     var passwordElement = document.getElementById("password_input");
     password = passwordElement.value;
-    xhttp.send("username=" +getUserName() +"&password=" + password);
+    xhttp.send("username=" + getUserName() + "&password=" + password);
 
     var usernameElement = document.getElementById("username");
     usernameElement.innerHTML = "Login in Progress";
