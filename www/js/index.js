@@ -112,6 +112,7 @@ function get_profile(token) {
             var usernameElement = document.getElementById("username");
             if (response.status == "success") {
                 usernameElement.innerHTML = "Profile Loaded Successful";
+                window.localStorage.setItem("profile", response.profile);
                 var profileElement = document.getElementById("profile");
                 profileElement.innerHTML = response.profile["First Name"] + " " + response.profile["Last Name"] + " " + response.profile["Gender"];
 
