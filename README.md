@@ -3,7 +3,7 @@
 1. onDeviceReady handler should be simple and should not be changes. Syntax errors or other problems 
 in it makes application completely broken
 
-2. localStorage is reset when application quits apparently (maybe not - still not sure)
+2. localStorage is preserved when application quits
  
 3. Tutorial - http://coenraets.org/blog/phonegap-tutorial/
 
