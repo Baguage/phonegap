@@ -1,3 +1,7 @@
+# Building for browser platform
+
+cordova build browser
+
 # Notes
 
 1. onDeviceReady handler should be simple and should not be changes. Syntax errors or other problems 
