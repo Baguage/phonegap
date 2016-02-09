@@ -38,10 +38,3 @@ in it makes application completely broken
 2. Weinre https://www.youtube.com/watch?v=HEqwnpLYnI0 (WiFi debug)
  
  
-# TODO
-
-1. Update android on my Galaxy Tab
-
-2. Try APK on a real device
-
-3. Make a form using tutorial on https://www.youtube.com/watch?v=BVo3nnloZzw 
